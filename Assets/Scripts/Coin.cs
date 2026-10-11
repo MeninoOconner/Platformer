@@ -13,6 +13,11 @@ public class Coin : MonoBehaviour
                 GameManager.Instance.AddScore(value);
             }
 
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayCoin();
+            }
+
             Destroy(gameObject);
         }
     }

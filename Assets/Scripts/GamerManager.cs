@@ -77,6 +77,11 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayHurt();
+            }
+
             Respawn();
         }
     }
@@ -95,6 +100,12 @@ public class GameManager : MonoBehaviour
         if (winPanel != null)
         {
             winPanel.SetActive(true);
+        }
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.StopMusic();
+            AudioManager.Instance.PlayWin();
         }
 
         Time.timeScale = 0f;
@@ -120,6 +131,12 @@ public class GameManager : MonoBehaviour
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(true);
+        }
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.StopMusic();
+            AudioManager.Instance.PlayGameOver();
         }
 
         Time.timeScale = 0f;
